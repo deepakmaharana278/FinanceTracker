@@ -18,10 +18,16 @@ FinanceTracker/
 - ├── finance/ # Main application code
 - ├── project/ # Project configuration files
 - ├── manage.py # Django management script
-- ├── db.sqlite3 # SQLite database
-
+- └── db.sqlite3 # SQLite database
 
 ---
+
+
+## 📖 Usage
+
+- Add your income and expense transactions through the interface.  
+- Categorize each transaction for easier financial tracking.  
+- Review summary reports to manage expenses and savings efficiently.
 
 ## 🛠️ Technologies Used
 
