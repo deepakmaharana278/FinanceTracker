@@ -1,0 +1,50 @@
+{% extends 'finance/base.html' %}
+{% block title %}Dashboard{% endblock title %}
+{% block content %}
+<div class="container mx-auto p-6">
+    <div class="text-center mb-8">
+        <h1 class="text-3xl font-bold text-indigo-600">Welcome to your Finance Dashboard</h1>
+        <h1 class="text-2xl font-bold">{{request.user|capfirst}}</h1>
+        <p class="text-xl text-gray-700 mt-2">Track your income, expenses, and goals effectively.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-3xl font-bold text-gray-800">Total Income</h2>
+            <p class="text-3xl font-bold text-green-500">${{total_income|floatformat:2}}</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-3xl font-bold text-gray-800">Total Expenses</h2>
+            <p class="text-3xl font-bold text-red-500">${{total_expense|floatformat:2}}</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-3xl font-bold text-gray-800">Net Savings</h2>
+            <p class="text-3xl font-bold text-indigo-500">${{net_savings|floatformat:2}}</p>
+        </div>
+    </div>
+
+    
+    <div class="mt-5 bg-white p-6 rounded-lg shadow-md mb-8">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Your Goals</h2>
+        <ul class="space-y-4">
+            {% for item in goal_progress %}
+            <li class="flex justify-between item-center">
+                <div class="text-gray-800">
+                    <p class="font-semibold">{{ item.goal.name }}</p>
+                    <p class="text-sm text-gray-600">Target: ${{ item.goal.target_amount|floatformat:2 }}</p>
+                    <p class="text-sm text-gray-600">Deadline: {{ item.goal.deadline }}</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-xl font-bold text-indigo-500">{{ item.progress|floatformat:2 }}%</p>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="text-center">
+        <a href="{% url 'goal_add' %}" class="bg-indigo-500 text-white px-6 py-2 rounded-lg shadow-md hover:bg-indigo-600 transition">Add New Goal</a>
+    </div>
+</div>
+{% endblock content %}

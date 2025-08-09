@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-blue-700 p-4 text-white">
+        {% if user.is_authenticated %}
+        <a href="{% url 'dashboard' %}" class="mx-4">Dashboard</a>
+        <a href="{% url 'transaction_add' %}">Add Transaction</a>
+        <a href="{% url 'transaction_list' %}" class="mx-4">Transaction</a>
+        <a href="{% url 'goal_add' %}" class="mx-4">Add Goal</a>
+        <form id="logout-form" action="{% url 'logout' %}" method="POST" style="display: inline;">
+            {% csrf_token %}
+            <a href="#" onclick="document.getElementById('logout-form').submit();" class="ml-4">Logout</a>
+        </form>
+        {% else %}
+        <a href="{% url 'login' %}" class="ml-4">Login</a>
+        <a href="{% url 'register' %}" class="ml-4">Register</a>
+        {% endif %}
+    </nav>
+    {% block content %}{% endblock content %}
+    {% if messages %}
+       <div id="message-container" class="fixed top-5 left-1/2 transform -transalate-x-1/2 w-96">
+        {% for message in messages %}
+         <div class="bg-{{ message.tags }}-500 text-white p-3 rounded shadow-md mb-2 bg-purple-700">
+            Message: {{ message }}
+         </div>
+        {% endfor %}
+       </div>
+    {% endif %}
+
+    <script>
+        // Autometically fade out messages after 5 seconds
+        setTimeout(function() {
+            let messageContainer = document.getElementById('message-container');
+            if (messageContainer){
+                messageContainer.style.transition = "opacity 0.5s ease-out";
+                messageContainer.style.opacity = "0";
+                setTimeout(() => messageContainer.remove(), 500); // remove from DOM
+            }
+        },5000); // 5 second
+    </script>
+</body>
+</html>
