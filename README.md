@@ -32,5 +32,6 @@ FinanceTracker/
 
 
 ## Author
---> Deepak Maharana
-
+**Deepak Maharana**  
+📧 deepakmaharana3500@gmail.com  
+🔗 [LinkedIn](https://www.linkedin.com/in/deepak-maharana-3a7728325)
