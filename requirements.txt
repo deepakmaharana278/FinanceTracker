@@ -1,0 +1,9 @@
+asgiref==3.9.1
+diff-match-patch==20241021
+Django==5.2.4
+django-import-export==4.3.9
+et_xmlfile==2.0.0
+openpyxl==3.1.5
+sqlparse==0.5.3
+tablib==3.8.0
+tzdata==2025.2
