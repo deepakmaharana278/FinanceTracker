@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-$4q_rz1dz(+w903h1u5is4@85-(utdkot_6@!qnu$dz=adcdb*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['financetracker-0jxl.onrender.com']
 
 
 # Application definition
