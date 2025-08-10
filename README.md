@@ -18,7 +18,8 @@ FinanceTracker/
 - ├── finance/ # Main application code
 - ├── project/ # Project configuration files
 - ├── manage.py # Django management script
-- └── db.sqlite3 # SQLite database
+- ├── db.sqlite3 # SQLite database
+- └── requirements.txt 
 
 ---
 
